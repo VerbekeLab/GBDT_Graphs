@@ -10,3 +10,4 @@ tensorflow==2.13.0
 chardet==5.2.0
 stellargraph==1.2.1
 shap==0.44.1
+yaml
