@@ -1,0 +1,10 @@
+parameters:
+  dataset: 'insurance'
+
+insurance:
+  data_path_train: 'data/train_anonymized.csv'
+  data_path_test: 'data/test_anonymized.csv'
+  number_node_types: 2
+
+hcp:
+  number_node_types: 4

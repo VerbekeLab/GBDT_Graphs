@@ -1,0 +1,4 @@
+insurance:
+  'max_path_length': 2
+  'node_types': ['a', 'c']
+  'pattern_path': ['c', 'a', 'c', 'a', 'c']
