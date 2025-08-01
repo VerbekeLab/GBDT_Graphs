@@ -65,6 +65,7 @@ def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
     plt.tight_layout()
 
     plt.savefig("res/plot_results.pdf")
+    plt.close()
 
 def plot_shap_importance(bst, test_X_path_extended, path_names_cols):
     # SHAP explanation
