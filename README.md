@@ -13,15 +13,29 @@ A preprint is available on [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstra
 ## Repository structure
 This repository is organised as follows:
 ```bash
-|- assets/
-    |- *your own files*
 |- config/
+    |- data/
+        |- config.yaml
+    |- methods/
+        |- config.yaml
 |- data/
-|- lib/
-|- notebooks/
+    |- insurance/
 |- res/
 |- scripts/
+    |- experiment.py
 |- src/
+    |- data/
+        |- graph_data.py
+    |- methods/
+        |- G_GBM.py
+        |- network.py
+        |- utils/
+            |- classifier.py
+            |- paths.py
+    |- utils/
+        |- evaluation.py
+        |- param_dict.py
+        |- setup.py
 ```
 
 ## Installing
