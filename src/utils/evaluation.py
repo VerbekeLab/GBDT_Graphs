@@ -22,7 +22,6 @@ def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic (ROC)')
     plt.legend(loc="lower right")
-    plt.savefig("res/roc_curve.pdf")
 
     # 2. Precision-recall curve
     plt.subplot(1, 3, 2)
@@ -39,7 +38,6 @@ def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
     plt.xlim([0.0, 1.0])
     plt.title('PrecisionRecall curve')
     plt.legend(loc="upper right")
-    plt.savefig("res/precision_recall_curve.pdf")
 
     # 3. Lift chart
     plt.subplot(1, 3, 3)
@@ -64,4 +62,4 @@ def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
 
     plt.tight_layout()
 
-    plt.savefig("res/lift_chart.pdf")
+    plt.savefig("res/plot_results.pdf")
