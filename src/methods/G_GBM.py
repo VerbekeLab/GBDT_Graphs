@@ -33,4 +33,4 @@ def G_GBM(graph_data_train, graph_data_test, node_type_classification_index, num
                                                     )
 
     preds, bst = train_lgb_model(train_X_path_extended, test_X_path_extended, path_names_cols)
-    return preds, bst
+    return preds, bst, test_X_path_extended, path_names_cols

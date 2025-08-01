@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import shap
+import pandas as pd
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score
 
 
@@ -63,3 +65,40 @@ def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
     plt.tight_layout()
 
     plt.savefig("res/plot_results.pdf")
+
+def plot_shap_importance(bst, test_X_path_extended, path_names_cols):
+    # SHAP explanation
+    explainer = shap.Explainer(bst)
+    shap_values = explainer(test_X_path_extended[path_names_cols])
+
+    # Convert to DataFrame and get absolute values
+    shaps_paths = pd.DataFrame(shap_values[:, :, 1].values).abs()
+    shaps_paths.columns = path_names_cols
+
+    # Merge with predictions dataframe
+    preds = pd.concat([test_X_path_extended[['group', 'Y', 'weight']], shaps_paths], axis=1)
+
+    # Apply weights
+    preds[path_names_cols] = preds[path_names_cols].multiply(preds["weight"], axis="index")
+
+    # Sum the SHAP values
+    sums = preds.groupby('group')[path_names_cols].mean().sum()
+
+    color_map = {
+        'H(a)': 'red',
+        'H(c)': 'orange',
+        'N1(a': 'blue',
+        'N1(c': 'green',
+        'N2(a': 'yellow',
+        'N2(c': 'purple'
+    }
+    # Map the list to colors
+    colors = [color_map[item] for item in [paths[0:4] for paths in path_names_cols]]
+
+    # Plotting
+    sums[::-1].plot(kind='barh', color=colors)
+    plt.title('Variable importance aggregated (over the test set)')
+    plt.ylabel('Variable N_i in neighborhood of distance i')
+    plt.xlabel('Sum of (weighted, grouped) absolute SHAP values over head nodes')
+    plt.tight_layout()
+    plt.savefig("res/plot_shap_importance.pdf")

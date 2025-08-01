@@ -16,7 +16,7 @@ from src.utils.setup import load_config
 from src.methods.G_GBM import *
 from src.methods.utils.classifiers import train_lgb_model_vanilla
 from src.methods.network import train_hinsage_full
-from src.utils.evaluation import plot_evaluation_curves
+from src.utils.evaluation import plot_evaluation_curves, plot_shap_importance
 
 dataset = load_config("config/data/config.yaml")['parameters']['dataset']
 parameters_data = load_config("config/data/config.yaml")[dataset]
@@ -31,7 +31,7 @@ node_type_classification_index = parameters_data['node_types_dict'][node_type_cl
 
 
 # G-GBM
-preds, bst = G_GBM(
+preds, bst, test_X_path_extended, path_names_cols = G_GBM(
     graph_data_train=graph_data_train,
     graph_data_test=graph_data_test,
     node_type_classification_index=node_type_classification_index,
@@ -56,8 +56,11 @@ y_pred_hin = train_hinsage_full(
     number_node_types=number_node_types
 )
 
-# Evaluation
+# Evaluation 
 plot_evaluation_curves(preds.groupby('group')['Y'].mean().loc[graph_data_test[number_node_types+node_type_classification_index].index],
                        y_preds = [preds.groupby('group')['Y_hat_weighted'].sum().loc[graph_data_test[number_node_types+node_type_classification_index].index],
                                           preds_vanilla, y_pred_hin],
                        model_names = ['G-Gbm', 'Gbm', 'HinSage'], factor_reduce=20)
+
+# Explanations
+plot_shap_importance(bst, test_X_path_extended, path_names_cols)
