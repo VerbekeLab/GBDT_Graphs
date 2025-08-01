@@ -8,27 +8,35 @@ from typing import Union, Optional, Dict, Any
 import pickle
 
 # DATA LOADING FUNCTION
+def load_data(
+    dataset: str,
+    path: str, 
+    number_node_types: int = 1
+):
+    
+    if dataset == "insurance":
+        return load_data_insurance(path, number_node_types=number_node_types)
+    else:
+        raise ValueError(f"Unknown dataset: {dataset}")
+
 def load_data_insurance(
     data_path: str, 
+    number_node_types: int = 1
 ):
     with open(data_path, "rb") as f:
         data = pickle.load(f)
-    return data
-
-def add_none_line(data, number_node_types: int = 1):
+    
     for i in range(1, number_node_types + 1):
         num_features = data[i].shape[1]
         data[i].loc['NA'] = tuple([None] * num_features)
         data[i] = data[i].astype(float)
 
+    return data
+
 class NetworkData:
-    def __init__(self, data, number_node_types: int = 1):
-        self.data = add_none_line(data, number_node_types)
+    def __init__(self, data, number_node_types: int = 1, ):
+        self.data = data
         self.number_node_types = number_node_types
-        # Ensure self.data contains entry at self.data[1].loc['NA']
-        # Added for debugging purposes
-        if 'NA' not in self.data[1].index:
-            raise ValueError("Addition of 'NA' line failed. 'NA' not found in data[1].index.")
 
     def get_graph(self):
         return self.data[0]
