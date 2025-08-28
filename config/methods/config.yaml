@@ -2,3 +2,8 @@ insurance:
   'max_path_length': 2
   'pattern_path': ['c', 'a', 'c', 'a', 'c']
   'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
+
+hcp:
+  'max_path_length': 2
+  'pattern_path': ['provider', 'beneficiary', 'provider', 'beneficiary', 'provider']
+  'neighbourhood': ['H(provider)', 'N1(beneficiary)', 'N1(provider)', 'N2(beneficiary)', 'N2(provider)']
