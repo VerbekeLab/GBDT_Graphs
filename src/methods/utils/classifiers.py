@@ -117,7 +117,7 @@ def train_hinsage_model(G_train, G_test, label_train, label_test, batch_size=100
 
 from stellargraph import StellarGraph
 def Nx_to_SG(G,type1,type2, dataset):
-    if dataset in ["insurance", "insurance_gb"]:
+    if dataset in ["insurance_a", "insurance_c", "insurance_gb"]:
         return Nx_to_SG_ins(G,type1,type2)
     elif dataset in ["hcp", "hcp_gb"]:
         return Nx_to_SG_hcp(G,type1,type2)

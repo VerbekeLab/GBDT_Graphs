@@ -1,7 +1,14 @@
 parameters:
-  dataset: 'hcp'
+  dataset: 'insurance_a'
 
-insurance:
+insurance_a:
+  data_path_train: 'data/Insurance/train_anonymized_ordered.pkl'
+  data_path_test: 'data/Insurance/test_anonymized_ordered.pkl'
+  node_types: ['a', 'c']
+  node_types_dict: {'c': 1, 'a': 2}
+  number_node_types: 2
+
+insurance_c:
   data_path_train: 'data/Insurance/train_anonymized_ordered.pkl'
   data_path_test: 'data/Insurance/test_anonymized_ordered.pkl'
   node_types: ['a', 'c']

@@ -74,7 +74,7 @@ if 'HINSage' in models_to_train:
 plot_evaluation_curves(preds.groupby('group')['Y'].mean().loc[graph_data_test[number_node_types+node_type_classification_index].index],
                        y_preds = [preds.groupby('group')['Y_hat_weighted'].sum().loc[graph_data_test[number_node_types+node_type_classification_index].index],
                                           preds_vanilla, y_pred_hin],
-                       model_names = models_to_train, factor_reduce=20, dataset=dataset)
+                       model_names = models_to_train, factor_reduce=1, dataset=dataset)
 
 # Explanations
 plot_shap_importance(bst, test_X_path_extended, path_names_cols, dataset=dataset)

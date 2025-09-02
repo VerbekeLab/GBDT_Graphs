@@ -85,7 +85,9 @@ def plot_shap_importance(bst, test_X_path_extended, path_names_cols, dataset='')
     # Sum the SHAP values
     sums = preds.groupby('group')[path_names_cols].mean().sum()
 
-    color_map = {
+    # Define color maps for different datasets
+    # Look at first four letters of the path element to define colours
+    color_map_insurance = {
         'H(a)': 'red',
         'H(c)': 'orange',
         'N1(a': 'blue',
@@ -93,11 +95,26 @@ def plot_shap_importance(bst, test_X_path_extended, path_names_cols, dataset='')
         'N2(a': 'yellow',
         'N2(c': 'purple'
     }
+
+    color_map_hcp = {
+        'H(P)': 'red',
+        'H(B)': 'orange',
+        'N1(P': 'blue',
+        'N1(B': 'green',
+        'N2(P': 'yellow',
+        'N2(B': 'purple'
+    }
+
+    if dataset in ['insurance_a', 'insurance_c']:
+        color_map = color_map_insurance
+    elif dataset == 'hcp':
+        color_map = color_map_hcp
+
     # Map the list to colors
     colors = [color_map[item] for item in [paths[0:4] for paths in path_names_cols]]
 
     # Plotting
-    sums[::-1].plot(kind='barh', color=colors)
+    sums[::-1].plot(kind='barh', color=colors, figsize=(15, 15))
     plt.title('Variable importance aggregated (over the test set)')
     plt.ylabel('Variable N_i in neighborhood of distance i')
     plt.xlabel('Sum of (weighted, grouped) absolute SHAP values over head nodes')

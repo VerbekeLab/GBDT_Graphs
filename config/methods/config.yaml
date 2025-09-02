@@ -1,8 +1,14 @@
-insurance:
+insurance_c:
   'max_path_length': 2
   'pattern_path': ['c', 'a', 'c', 'a', 'c']
   'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
   'head_node_type': 'company'
+
+insurance_a:
+  'max_path_length': 2
+  'pattern_path': ['a', 'c', 'a', 'c', 'a']
+  'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
+  'head_node_type': 'admin'
 
 insurance_gb:
   'max_path_length': 0
