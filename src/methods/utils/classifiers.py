@@ -116,7 +116,15 @@ def train_hinsage_model(G_train, G_test, label_train, label_test, batch_size=100
     return pd.Series(all_predictions.flatten())
 
 from stellargraph import StellarGraph
-def Nx_to_SG(G,comp,admin):
+def Nx_to_SG(G,type1,type2, dataset):
+    if dataset in ["insurance", "insurance_gb"]:
+        return Nx_to_SG_ins(G,type1,type2)
+    elif dataset in ["hcp", "hcp_gb"]:
+        return Nx_to_SG_hcp(G,type1,type2)
+    else:
+        raise ValueError(f"No implementation for dataset: {dataset}")
+
+def Nx_to_SG_ins(G,comp,admin):
     def get_limited_dummies(df, columns, max_categories=10):
         df_copy = df.copy()
         for col in columns:
@@ -132,4 +140,15 @@ def Nx_to_SG(G,comp,admin):
     sgG = StellarGraph.from_networkx(G, node_features={"company":
         get_limited_dummies(comp, columns=['Legal Form', 'Localisation district category'], max_categories=15).drop('NA'),
                             "administrator": admin.drop('NA')}) # "fraud":fraud
+    return sgG
+
+def Nx_to_SG_hcp(G,prov,ben):
+    sgG = StellarGraph.from_networkx(
+        G, 
+        node_features={
+            "provider": prov.drop('NA'),
+            "beneficiary": ben.drop('NA')
+        }
+    )
+
     return sgG

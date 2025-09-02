@@ -5,9 +5,11 @@ def train_hinsage_full(
         graph_data_test,
         node_type_classification_index,
         number_node_types,
+        dataset, 
+        head_node_type
 ):
-    SGg_train = Nx_to_SG(graph_data_train[0], graph_data_train[1], graph_data_train[2])
-    SGg_test = Nx_to_SG(graph_data_test[0], graph_data_test[1], graph_data_test[2])
+    SGg_train = Nx_to_SG(graph_data_train[0], graph_data_train[1], graph_data_train[2], dataset)
+    SGg_test = Nx_to_SG(graph_data_test[0], graph_data_test[1], graph_data_test[2], dataset)
     y_pred_hin = train_hinsage_model(
         SGg_train,
         SGg_test, 
@@ -20,6 +22,7 @@ def train_hinsage_full(
         epochs=10,
         early_stopping_patience=5, 
         verbose=1, 
-        head_node_type="company")
-    
+        head_node_type=head_node_type
+    )
+
     return y_pred_hin

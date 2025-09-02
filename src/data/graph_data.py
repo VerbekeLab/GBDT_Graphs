@@ -13,8 +13,8 @@ def load_data(
     path: str, 
     number_node_types: int = 1
 ):
-    
-    if dataset == "insurance":
+
+    if dataset in ["insurance", "insurance_gb", "hcp", "hcp_gb"]:
         return load_data_insurance(path, number_node_types=number_node_types)
     else:
         raise ValueError(f"Unknown dataset: {dataset}")

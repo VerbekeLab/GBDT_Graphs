@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.metrics import roc_curve, auc, precision_recall_curve, average_precision_score
 
 
-def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
+def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10, dataset=''):
     plt.figure(figsize=(18, 5))
 
     # 1. ROC curve
@@ -64,10 +64,10 @@ def plot_evaluation_curves(y_test, y_preds, model_names, factor_reduce = 10):
 
     plt.tight_layout()
 
-    plt.savefig("res/plot_results.pdf")
+    plt.savefig(f"res/plot_results_{dataset}.pdf")
     plt.close()
 
-def plot_shap_importance(bst, test_X_path_extended, path_names_cols):
+def plot_shap_importance(bst, test_X_path_extended, path_names_cols, dataset=''):
     # SHAP explanation
     explainer = shap.Explainer(bst)
     shap_values = explainer(test_X_path_extended[path_names_cols])
@@ -102,4 +102,4 @@ def plot_shap_importance(bst, test_X_path_extended, path_names_cols):
     plt.ylabel('Variable N_i in neighborhood of distance i')
     plt.xlabel('Sum of (weighted, grouped) absolute SHAP values over head nodes')
     plt.tight_layout()
-    plt.savefig("res/plot_shap_importance.pdf")
+    plt.savefig(f"res/plot_shap_importance_{dataset}.pdf")
