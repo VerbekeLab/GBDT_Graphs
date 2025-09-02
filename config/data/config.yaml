@@ -1,7 +1,14 @@
 parameters:
-  dataset: 'insurance'
+  dataset: 'hcp'
 
 insurance:
+  data_path_train: 'data/Insurance/train_anonymized_ordered.pkl'
+  data_path_test: 'data/Insurance/test_anonymized_ordered.pkl'
+  node_types: ['a', 'c']
+  node_types_dict: {'c': 1, 'a': 2}
+  number_node_types: 2
+
+insurance_gb:
   data_path_train: 'data/Insurance/train_anonymized_ordered.pkl'
   data_path_test: 'data/Insurance/test_anonymized_ordered.pkl'
   node_types: ['a', 'c']
@@ -11,6 +18,13 @@ insurance:
 hcp:
   data_path_train: 'data/HCP/hcp_train.pkl'
   data_path_test: 'data/HCP/hcp_test.pkl'
-  node_types: ['provider', 'beneficiary']
-  node_types_dict: {'provider': 1, 'beneficiary': 2}
+  node_types: ['P', 'B']
+  node_types_dict: {'P': 1, 'B': 2}
+  number_node_types: 2
+
+hcp_gb:
+  data_path_train: 'data/HCP/hcp_train.pkl'
+  data_path_test: 'data/HCP/hcp_test.pkl'
+  node_types: ['P', 'B']
+  node_types_dict: {'P': 1, 'B': 2}
   number_node_types: 2
