@@ -3,27 +3,32 @@ insurance_c:
   'pattern_path': ['c', 'a', 'c', 'a', 'c']
   'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
   'head_node_type': 'company'
+  'metapath': [['company', 'administrator', 'company', 'administrator', 'company']]
 
 insurance_a:
   'max_path_length': 2
   'pattern_path': ['a', 'c', 'a', 'c', 'a']
   'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
-  'head_node_type': 'admin'
+  'head_node_type': 'administrator'
+  'metapath': [['administrator', 'company', 'administrator', 'company', 'administrator']]
 
 insurance_gb:
   'max_path_length': 0
   'pattern_path': ['c', 'a', 'c', 'a', 'c']
   'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
   'head_node_type': 'company'
+  'metapath': [['company', 'administrator', 'company', 'administrator', 'company']]
 
 hcp:
   'max_path_length': 2
   'pattern_path': ['P', 'B', 'P', 'B', 'P']
   'neighbourhood': ['H(P)', 'N1(B)', 'N1(P)', 'N2(B)', 'N2(P)']
   'head_node_type': 'provider'
+  'metapath': [['provider', 'beneficiary', 'provider', 'beneficiary', 'provider']]
 
 hcp_gb:
   'max_path_length': 0
   'pattern_path': ['P', 'B', 'P', 'B', 'P']
   'neighbourhood': ['H(P)', 'N1(B)', 'N1(P)', 'N2(B)', 'N2(P)']
   'head_node_type': 'provider'
+  'metapath': [['provider', 'beneficiary', 'provider', 'beneficiary', 'provider']]

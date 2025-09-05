@@ -1,5 +1,5 @@
 parameters:
-  dataset: 'insurance_a'
+  dataset: 'hcp'  # 'insurance_a', 'insurance_c', 'insurance_gb', 'hcp', 'hcp_gb'
 
 insurance_a:
   data_path_train: 'data/Insurance/train_anonymized_ordered.pkl'

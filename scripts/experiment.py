@@ -15,7 +15,7 @@ from src.data.graph_data import load_data
 from src.utils.setup import load_config
 from src.methods.G_GBM import *
 from src.methods.utils.classifiers import train_lgb_model_vanilla
-from src.methods.network import train_hinsage_full
+from src.methods.network import train_hinsage_full, train_metapath2vec_full
 from src.utils.evaluation import plot_evaluation_curves, plot_shap_importance
 
 dataset = load_config("config/data/config.yaml")['parameters']['dataset']
@@ -33,6 +33,8 @@ node_type_classification_index = parameters_data['node_types_dict'][node_type_cl
 models_to_train = [
     'G-GBM', 
     'LGB', 
+    'Metapath2vec',
+    'Metapath2vec_features',
     'HINSage'
     ]
 
@@ -58,6 +60,38 @@ if 'LGB' in models_to_train:
         labs_test=graph_data_test[number_node_types+node_type_classification_index]
     )
 
+# metapath2vec
+if 'Metapath2vec' in models_to_train:
+    print("Training Metapath2vec model...")
+    preds_metapath, bst3 = train_metapath2vec_full(
+        graph_data_train=graph_data_train,
+        graph_data_test=graph_data_test,
+        node_type_classification_index=node_type_classification_index,
+        number_node_types=number_node_types,
+        dataset=dataset,
+        parameters_method=parameters_method,
+        dimensions = 64,
+        num_walks = 2,
+        walk_length = 4,
+        context_window_size = 3
+    )
+
+if 'Metapath2vec_features' in models_to_train:
+    print("Training Metapath2vec + features model...")
+    preds_metapath_features, bst4 = train_metapath2vec_full(
+        graph_data_train=graph_data_train,
+        graph_data_test=graph_data_test,
+        node_type_classification_index=node_type_classification_index,
+        number_node_types=number_node_types,
+        dataset=dataset,
+        parameters_method=parameters_method,
+        dimensions = 64,
+        num_walks = 2,
+        walk_length = 4,
+        context_window_size = 3,
+        full_feature_set = True
+    )
+
 # HINSage
 if 'HINSage' in models_to_train:
     print("Training HINSage model...")
@@ -71,10 +105,19 @@ if 'HINSage' in models_to_train:
     )
 
 # Evaluation 
-plot_evaluation_curves(preds.groupby('group')['Y'].mean().loc[graph_data_test[number_node_types+node_type_classification_index].index],
-                       y_preds = [preds.groupby('group')['Y_hat_weighted'].sum().loc[graph_data_test[number_node_types+node_type_classification_index].index],
-                                          preds_vanilla, y_pred_hin],
-                       model_names = models_to_train, factor_reduce=1, dataset=dataset)
+plot_evaluation_curves(
+    preds.groupby('group')['Y'].mean().loc[graph_data_test[number_node_types+node_type_classification_index].index],
+    y_preds = [
+        preds.groupby('group')['Y_hat_weighted'].sum().loc[graph_data_test[number_node_types+node_type_classification_index].index],
+        preds_vanilla,
+        preds_metapath,
+        preds_metapath_features,
+        y_pred_hin
+        ],
+        model_names = models_to_train, 
+        factor_reduce=1, 
+        dataset=dataset
+        )
 
 # Explanations
 plot_shap_importance(bst, test_X_path_extended, path_names_cols, dataset=dataset)

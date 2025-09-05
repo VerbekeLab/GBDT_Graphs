@@ -114,7 +114,7 @@ def plot_shap_importance(bst, test_X_path_extended, path_names_cols, dataset='')
     colors = [color_map[item] for item in [paths[0:4] for paths in path_names_cols]]
 
     # Plotting
-    sums[::-1].plot(kind='barh', color=colors, figsize=(15, 15))
+    sums[::-1].plot(kind='barh', color=colors, figsize=(10, 8))
     plt.title('Variable importance aggregated (over the test set)')
     plt.ylabel('Variable N_i in neighborhood of distance i')
     plt.xlabel('Sum of (weighted, grouped) absolute SHAP values over head nodes')
