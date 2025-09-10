@@ -8,7 +8,7 @@ insurance_c:
 insurance_a:
   'max_path_length': 2
   'pattern_path': ['a', 'c', 'a', 'c', 'a']
-  'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
+  'neighbourhood': ['H(a)', 'N1(c)', 'N1(a)', 'N2(c)', 'N2(a)']
   'head_node_type': 'administrator'
   'metapath': [['administrator', 'company', 'administrator', 'company', 'administrator']]
 
