@@ -30,13 +30,8 @@ graph_data_test = load_data(dataset, parameters_data['data_path_test'], number_n
 node_type_classification = parameters_method['pattern_path'][0]
 node_type_classification_index = parameters_data['node_types_dict'][node_type_classification]
 
-models_to_train = [
-    'G-GBM', 
-    'LGB', 
-    'Metapath2vec',
-    'Metapath2vec_features',
-    'HINSage'
-    ]
+models_to_train = parameters_method['models_to_train']
+hyperparameters_hinsage = parameters_method['hyperparameters_hinsage']
 
 # G-GBM
 if 'G-GBM' in models_to_train:
@@ -101,7 +96,8 @@ if 'HINSage' in models_to_train:
         node_type_classification_index=node_type_classification_index,
         number_node_types=number_node_types,
         dataset=dataset, 
-        head_node_type=head_node_type
+        head_node_type=head_node_type, 
+        hyperparameters_hinsage=hyperparameters_hinsage
     )
 
 # Evaluation 
