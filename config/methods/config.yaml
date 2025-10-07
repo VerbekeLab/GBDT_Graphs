@@ -4,20 +4,44 @@ insurance_c:
   'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
   'head_node_type': 'company'
   'metapath': [['company', 'administrator', 'company', 'administrator', 'company']]
+  'models_to_train': ['G-GBM', 'LGB', 'HINSage']
+  'hyperparameters_hinsage':
+    'batch_size': 1000
+    'num_samples': [10, 5]
+    'model_layer_sizes': [32, 32]
+    'learning_rate': 0.01
+    'epochs': 10
+    'early_stopping_patience': 5
 
 insurance_a:
   'max_path_length': 2
+  'pattern_path': ['a', 'c', 'a', 'c']
+  'neighbourhood': ['H(a)', 'N1(c)', 'N2(a)', 'N2(c)']
+  'head_node_type': 'administrator'
+  'metapath': [['administrator', 'company', 'administrator', 'company', 'administrator']]
+  'models_to_train': ['G-GBM', 'LGB', 'HINSage']
+  'hyperparameters_hinsage':
+    'batch_size': 1000
+    'num_samples': [10, 5]
+    'model_layer_sizes': [32, 32]
+    'learning_rate': 0.02
+    'epochs': 20
+    'early_stopping_patience': 10
+
+insurance_gb:
+  'max_path_length': 0
   'pattern_path': ['a', 'c', 'a', 'c', 'a']
   'neighbourhood': ['H(a)', 'N1(c)', 'N1(a)', 'N2(c)', 'N2(a)']
   'head_node_type': 'administrator'
   'metapath': [['administrator', 'company', 'administrator', 'company', 'administrator']]
-
-insurance_gb:
-  'max_path_length': 0
-  'pattern_path': ['c', 'a', 'c', 'a', 'c']
-  'neighbourhood': ['H(c)', 'N1(a)', 'N1(c)', 'N2(a)', 'N2(c)']
-  'head_node_type': 'company'
-  'metapath': [['company', 'administrator', 'company', 'administrator', 'company']]
+  'models_to_train': ['G-GBM', 'LGB', 'HINSage']
+  'hyperparameters_hinsage':
+    'batch_size': 1000
+    'num_samples': [10, 5]
+    'model_layer_sizes': [32, 32]
+    'learning_rate': 0.01
+    'epochs': 10
+    'early_stopping_patience': 5
 
 hcp:
   'max_path_length': 2
@@ -25,6 +49,14 @@ hcp:
   'neighbourhood': ['H(P)', 'N1(B)', 'N1(P)', 'N2(B)', 'N2(P)']
   'head_node_type': 'provider'
   'metapath': [['provider', 'beneficiary', 'provider', 'beneficiary', 'provider']]
+  'models_to_train': ['G-GBM', 'LGB', 'Metapath2vec', 'Metapath2vec_features','HINSage']
+  'hyperparameters_hinsage':
+    'batch_size': 1000
+    'num_samples': [10, 5]
+    'model_layer_sizes': [32, 32]
+    'learning_rate': 0.01
+    'epochs': 10
+    'early_stopping_patience': 5
 
 hcp_gb:
   'max_path_length': 0
@@ -32,3 +64,11 @@ hcp_gb:
   'neighbourhood': ['H(P)', 'N1(B)', 'N1(P)', 'N2(B)', 'N2(P)']
   'head_node_type': 'provider'
   'metapath': [['provider', 'beneficiary', 'provider', 'beneficiary', 'provider']]
+  'models_to_train': ['G-GBM', 'LGB', 'Metapath2vec', 'Metapath2vec_features','HINSage']
+  'hyperparameters_hinsage':
+    'batch_size': 1000
+    'num_samples': [10, 5]
+    'model_layer_sizes': [32, 32]
+    'learning_rate': 0.01
+    'epochs': 10
+    'early_stopping_patience': 5
