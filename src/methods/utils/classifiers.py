@@ -137,9 +137,12 @@ def Nx_to_SG_ins(G,comp,admin):
         # Apply pd.get_dummies
         result = pd.get_dummies(df_copy, columns=columns, drop_first=True)
         return result
-    sgG = StellarGraph.from_networkx(G, node_features={"company":
-        get_limited_dummies(comp, columns=['Legal Form', 'Localisation district category'], max_categories=15).drop('NA'),
-                            "administrator": admin.drop('NA')}) # "fraud":fraud
+    sgG = StellarGraph.from_networkx(G, 
+                                     node_features={
+                                         "company": get_limited_dummies(comp, columns=['Legal Form', 'Localisation district category'], max_categories=15).drop('NA'),
+                                         "administrator": admin.drop('NA')
+                                         }
+                                         ) 
     return sgG
 
 def Nx_to_SG_hcp(G,prov,ben):
