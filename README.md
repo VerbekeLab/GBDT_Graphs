@@ -19,7 +19,10 @@ This repository is organised as follows:
     |- methods/
         |- config.yaml
 |- data/
+    |- HCP/
     |- insurance/
+|- notebooks/
+    |- hcp_data_analysis.ipynb
 |- res/
 |- scripts/
     |- experiment.py
@@ -44,6 +47,9 @@ We have provided a `requirements.txt` file:
 pip install -r requirements.txt
 ```
 Please use the above in a newly created virtual environment to avoid clashing dependencies.
+
+We have also provided a `environment.txt` file that contains set-by-step instructions on how to set up the viruals environment. These steps might be necessary, since the deepwalk/node2vec implementation from `pytorch-geometric` might have some issues if dependencies are installed incorrectly. 
+
 
 ## Citing
 Please cite our paper and/or code as follows:
