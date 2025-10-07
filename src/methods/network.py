@@ -10,7 +10,8 @@ def train_hinsage_full(
         node_type_classification_index,
         number_node_types,
         dataset, 
-        head_node_type
+        head_node_type, 
+        hyperparameters_hinsage
 ):
     SGg_train = Nx_to_SG(graph_data_train[0], graph_data_train[1], graph_data_train[2], dataset)
     SGg_test = Nx_to_SG(graph_data_test[0], graph_data_test[1], graph_data_test[2], dataset)
@@ -19,12 +20,12 @@ def train_hinsage_full(
         SGg_test, 
         graph_data_train[number_node_types+node_type_classification_index], 
         graph_data_test[number_node_types+node_type_classification_index], 
-        batch_size=1000, 
-        num_samples=[10, 5],
-        model_layer_sizes=[32, 32], 
-        learning_rate=0.01, 
-        epochs=10,
-        early_stopping_patience=5, 
+        batch_size=hyperparameters_hinsage['batch_size'], 
+        num_samples=hyperparameters_hinsage['num_samples'],
+        model_layer_sizes=hyperparameters_hinsage['model_layer_sizes'], 
+        learning_rate=hyperparameters_hinsage['learning_rate'], 
+        epochs=hyperparameters_hinsage['epochs'],
+        early_stopping_patience=hyperparameters_hinsage['early_stopping_patience'], 
         verbose=1, 
         head_node_type=head_node_type
     )
