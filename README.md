@@ -57,10 +57,15 @@ Please cite our paper and/or code as follows:
 
 ```tex
 
-@article{vandervorst4887265inductive,
-  title={Inductive Inference of Gradient-Boosted Decision Trees on Graphs for Insurance Fraud Detection},
-  author={Vandervorst, F{\'e}lix Arthur and Verbeke, Wouter and Verdonck, Tim},
-  journal={Available at SSRN 4887265}
+@article{vandervorst2025inductive,
+      title={Inductive inference of gradient-boosted decision trees on graphs for insurance fraud detection}, 
+      author={Félix Vandervorst and Bruno Deprez and Wouter Verbeke and Tim Verdonck},
+      year={2025},
+      journal={arXiv preprint arXiv:2510.05676},
+      eprint={2510.05676},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2510.05676}, 
 }
 
 ```
