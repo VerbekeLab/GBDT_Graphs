@@ -1,4 +1,4 @@
-# Inductive Inference of Gradient-Boosted Decision Trees on Graphs for Insurance Fraud Detection </br><sub><sub>Félix Arthur Vandervorst, Wouter Verbeke, Tim Verdonck [[nd]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4887265)</sub></sub>
+# Inductive Inference of Gradient-Boosted Decision Trees on Graphs for Insurance Fraud Detection </br><sub><sub>Félix Arthur Vandervorst, Wouter Verbeke, Tim Verdonck [[Preprint]](https://arxiv.org/abs/2510.05676)</sub></sub>
 This paper combines the performance of gradient boosting on tabular data with heterogeneous network learning in insurance fraud detection. It illustrates how metapaths can be used to aggregate the network data, and how the principle of gradient boosting can be applied on this data. The performance is tested on synthetic, open-source and proprietary network data, building a strong case for the method's usefulness. 
 
 The main contributions of this paper are:
@@ -8,7 +8,7 @@ adapted to gradient-boosted trees.
 cross-validation and that of HinSage on a real insurance heterogeneous graph.
 3) We present an adapted interpretability adaptation of the popular SHAP-based explanation in classic supervised learning problems.
 
-A preprint is available on [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4887265). 
+A preprint is available on [arXiv](https://arxiv.org/abs/2510.05676). 
 
 ## Repository structure
 This repository is organised as follows:
