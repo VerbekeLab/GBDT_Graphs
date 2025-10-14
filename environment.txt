@@ -1,0 +1,12 @@
+# Using these lines of code, I set up the virtual environment to run the code on a Macbook (apple M-series chip)
+conda create -n GBDT python=3.8 jupyter numpy scipy matplotlib # Low version needed for stellargraph
+conda install networkx
+conda install pandas
+pip install tabulate
+conda install scikit-learn
+pip install tikzplotlib
+brew install lightgbm # Done on MAC (check specificities on other platforms)
+pip install tensorflow
+pip install chardet # Needed for stellargraph
+pip install stellargraph==1.2.1
+pip install shap
