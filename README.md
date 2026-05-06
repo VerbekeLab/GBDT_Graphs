@@ -10,6 +10,11 @@ cross-validation and that of HinSage on a real insurance heterogeneous graph.
 
 A preprint is available on [arXiv](https://arxiv.org/abs/2510.05676). 
 
+## Dataset
+The experiments are done on two datasets, one proprietary dataset that is published alongside our paper, and one open-source dataset. Both can be found online using the following links:
+- [Real-World Insurance Fraud](https://doi.org/10.34740/KAGGLE/DSV/16002794)
+- [Healthcare Provider Fraud](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis)
+
 ## Repository structure
 This repository is organised as follows:
 ```bash
@@ -49,12 +54,6 @@ pip install -r requirements.txt
 Please use the above in a newly created virtual environment to avoid clashing dependencies.
 
 We have also provided a `environment.txt` file that contains set-by-step instructions on how to set up the viruals environment. These steps might be necessary, since the deepwalk/node2vec implementation from `pytorch-geometric` might have some issues if dependencies are installed incorrectly. 
-
-## Dataset
-The experiments are done on two datasets, one proprietary dataset that is published alongside our paper, and one open-source dataset. Both can be found online using the following links:
-- [Real-World Insurance Fraud](https://doi.org/10.34740/KAGGLE/DSV/16002794)
-- [Healthcare Provider Fraud](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis)
-
 
 ## Citing
 Please cite our paper and/or code as follows:
