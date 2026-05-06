@@ -1,4 +1,4 @@
-# Inductive Inference of Gradient-Boosted Decision Trees on Graphs for Insurance Fraud Detection </br><sub><sub>Félix Arthur Vandervorst, Wouter Verbeke, Tim Verdonck [[Preprint]](https://arxiv.org/abs/2510.05676)</sub></sub>
+# Inductive Inference of Gradient-Boosted Decision Trees on Graphs for Insurance Fraud Detection </br><sub><sub>Félix Arthur Vandervorst, Bruno Deprez, Wouter Verbeke, Tim Verdonck [[Preprint]](https://arxiv.org/abs/2510.05676)</sub></sub>
 This paper combines the performance of gradient boosting on tabular data with heterogeneous network learning in insurance fraud detection. It illustrates how metapaths can be used to aggregate the network data, and how the principle of gradient boosting can be applied on this data. The performance is tested on synthetic, open-source and proprietary network data, building a strong case for the method's usefulness. 
 
 The main contributions of this paper are:
@@ -49,6 +49,11 @@ pip install -r requirements.txt
 Please use the above in a newly created virtual environment to avoid clashing dependencies.
 
 We have also provided a `environment.txt` file that contains set-by-step instructions on how to set up the viruals environment. These steps might be necessary, since the deepwalk/node2vec implementation from `pytorch-geometric` might have some issues if dependencies are installed incorrectly. 
+
+## Dataset
+The experiments are done on two datasets, one proprietary dataset that is published alongside our paper, and one open-source dataset. Both can be found online using the following links:
+- [Real-World Insurance Fraud](https://doi.org/10.34740/KAGGLE/DSV/16002794)
+- [Healthcare Provider Fraud](https://www.kaggle.com/datasets/rohitrox/healthcare-provider-fraud-detection-analysis)
 
 
 ## Citing
